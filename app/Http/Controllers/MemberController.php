@@ -10,7 +10,10 @@ class MemberController extends Controller
 {
     public function index()
     {
-        return view('members.index');
+        $members = Member::all();
+        return view('admin.members.index', [
+            'members'   => $members
+        ]);
     }
 
     public function create()
@@ -39,6 +42,6 @@ class MemberController extends Controller
         Session::flash('message', 'Information submitted successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect('/members');
+        return redirect('/');
     }
 }

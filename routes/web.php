@@ -56,15 +56,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit']);
         Route::patch('/roles/{role}', [RoleController::class, 'update']);
 
+        //Members
+        Route::get('/members', [MemberController::class, 'index']);
+
     });
     
 });
 
-
-Route::get('/members', [MemberController::class, 'index']);
 Route::get('/members/registration', [MemberController::class, 'create']);
 Route::post('/members', [MemberController::class, 'store']);
 
 Route::get('/test', function(){
-    dd(config('batch'));
+    //dd(config('batch'));
 });

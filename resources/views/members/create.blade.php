@@ -62,7 +62,7 @@
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                    Phone <span class="text-red-500 text-xs">( required )</span>
+                    Phone <span class="text-red-500 text-xs">( required ) <span class="text-green-500">Will not be published in public. We need your phone number to send sms about MIUPAA</span></span>
                 </label>
                 <input class="miu-input" value="{{old('phone')}}" id="phone" name="phone" type="text" required>
                 @if ($errors->has('phone'))
