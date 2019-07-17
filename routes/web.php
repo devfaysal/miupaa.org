@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\PermissionController;
 
 /*
@@ -57,4 +58,13 @@ Route::prefix('admin')->group(function () {
 
     });
     
+});
+
+
+Route::get('/members', [MemberController::class, 'index']);
+Route::get('/members/registration', [MemberController::class, 'create']);
+Route::post('/members', [MemberController::class, 'store']);
+
+Route::get('/test', function(){
+    dd(config('batch'));
 });
