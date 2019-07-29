@@ -18,10 +18,16 @@ class CreateMembersTable extends Migration
             $table->string('code')->nullable();
             $table->string('name');
             $table->string('batch');
+            $table->year('passing_year');
+            $table->string('university_id');
             $table->string('email');
             $table->string('phone');
+            $table->string('address');
             $table->string('organization')->nullable();
             $table->string('designation')->nullable();
+            $table->date('dob');
+            $table->string('gender');
+            $table->string('blood_group');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

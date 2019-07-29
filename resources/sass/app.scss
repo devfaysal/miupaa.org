@@ -5,19 +5,31 @@
 @import "./node_modules/tailwindcss/utilities";
 
 .miu-input{
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+    //@apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+
+    @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
 }
 
 .miu-input:focus{
-    @apply outline-none shadow-outline;
+    //@apply outline-none shadow-outline;
+
+    @apply outline-none bg-white border-gray-500;
 }
 
 .miu-select{
-    @apply block shadow appearance-none w-full bg-white border text-gray-700 py-2 px-4 pr-8 rounded leading-tight;
+    //@apply block shadow appearance-none w-full bg-white border text-gray-700 py-2 px-4 pr-8 rounded leading-tight;
+
+    @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight;
 }
 
 .miu-select:focus{
-    @apply outline-none bg-white shadow-outline;
+    //@apply outline-none bg-white shadow-outline;
+
+    @apply outline-none bg-white border-gray-500;
+}
+
+.miu-label{
+    @apply block tracking-wide text-gray-700 font-bold mb-2;
 }
 
 .miu-button{
