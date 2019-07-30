@@ -58,6 +58,9 @@ Route::prefix('admin')->group(function () {
 
         //Members
         Route::get('/members', [MemberController::class, 'index']);
+        Route::get('/members/{member}', [MemberController::class, 'show']);
+        Route::get('/members/{member}/edit', [MemberController::class, 'edit']);
+        Route::patch('/members/{member}', [MemberController::class, 'update']);
 
     });
     
