@@ -16,10 +16,11 @@ $factory->define(Member::class, function (Faker $faker) {
         'address'       => $faker->address,
         'organization'  => $faker->company,
         'designation'   => 'Manager',
-        'dob_day'       => $faker->dayOfMonth,
-        'dob_month'     => $faker->month,
-        'dob_year'      => $faker->year,
+        // 'dob_day'       => $faker->dayOfMonth,
+        // 'dob_month'     => $faker->month,
+        // 'dob_year'      => $faker->year,
         'gender'        => 'Male',
-        'blood_group'   => 'AB+'
+        'blood_group'   => 'AB+',
+        'image'         => 'placeholder-person.png'
     ];
 });

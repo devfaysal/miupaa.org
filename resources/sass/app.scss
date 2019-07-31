@@ -28,6 +28,10 @@
     @apply outline-none bg-white border-gray-500;
 }
 
+.miu-input-file{
+    @apply appearance-none block w-full bg-gray-200 border-gray-200 rounded py-2 px-4 leading-tight;
+}
+
 .miu-label{
     @apply block tracking-wide text-gray-700 font-bold mb-2;
 }

@@ -7859,6 +7859,22 @@ video {
   border-color: #a0aec0;
 }
 
+.miu-input-file {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: block;
+  width: 100%;
+  background-color: #edf2f7;
+  border-color: #edf2f7;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
+}
+
 .miu-label {
   display: block;
   letter-spacing: 0.025em;

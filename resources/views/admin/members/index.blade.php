@@ -15,6 +15,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Image</th>
                                         <th>Code</th>
                                         <th>Name</th>
                                         <th>Batch</th>
@@ -30,6 +31,7 @@
                                     @foreach ($members as $member)
                                         <tr>
                                             <th scope="row">{{$member->id}}</th>
+                                            <td><img style="height: 50px; width:50px;" src="{{asset('/storage/'. $member->image)}}" alt=""></td>
                                             <td>{{$member->code}}</td>
                                             <td>{{$member->name}}</td>
                                             <td>{{$member->batch}}</td>

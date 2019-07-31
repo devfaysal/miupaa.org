@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 
 class MemberController extends Controller
@@ -37,18 +38,24 @@ class MemberController extends Controller
             'address' => 'required',
             'organization' => 'nullable|string',
             'designation' => 'nullable|string',
-            'dob_day' => 'required',
-            'dob_month' => 'required',
-            'dob_year' => 'required',
+            // 'dob_day' => 'required',
+            // 'dob_month' => 'required',
+            // 'dob_year' => 'required',
             'gender' => 'required',
             'blood_group' => 'required',
+            'image' => 'nullable|image'
         ]);
-        $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
-        unset($attributes['dob_day']);
-        unset($attributes['dob_month']);
-        unset($attributes['dob_year']);
+        // $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
+        // unset($attributes['dob_day']);
+        // unset($attributes['dob_month']);
+        // unset($attributes['dob_year']);
         //dd($attributes);
 
+        $attributes['image'] = $this->uploadImage(
+            $request->file('image')
+        );
+
+        //Save to DB
         Member::create($attributes);
 
         Session::flash('message', 'Information submitted successfully!'); 
@@ -76,6 +83,7 @@ class MemberController extends Controller
 
     public function update(Request $request, Member $member)
     {
+        //dd($request->all());
         $attributes = $request->validate([
             'name'  => 'required',
             'batch' => 'required',
@@ -86,16 +94,24 @@ class MemberController extends Controller
             'address' => 'required',
             'organization' => 'nullable|string',
             'designation' => 'nullable|string',
-            'dob_day' => 'required',
-            'dob_month' => 'required',
-            'dob_year' => 'required',
+            // 'dob_day' => 'required',
+            // 'dob_month' => 'required',
+            // 'dob_year' => 'required',
             'gender' => 'required',
             'blood_group' => 'required',
+            'image' => 'nullable|image'
         ]);
-        $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
-        unset($attributes['dob_day']);
-        unset($attributes['dob_month']);
-        unset($attributes['dob_year']);
+        //dd($attributes);
+        // $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
+        // unset($attributes['dob_day']);
+        // unset($attributes['dob_month']);
+        // unset($attributes['dob_year']);
+
+        if($request->image != null){
+            $attributes['image'] = $this->uploadImage(
+                $request->file('image')
+            );
+        }
 
         $member->update($attributes);
 
@@ -103,5 +119,18 @@ class MemberController extends Controller
         Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/members');
+    }
+
+
+    public function uploadImage($image)
+    {
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $image = Image::make($image->getRealPath());
+
+        $image->resize(200, 200, function ($constraint) {
+		    $constraint->aspectRatio();
+        })->save(storage_path('app/public/').$imageName);
+        
+        return $imageName;
     }
 }

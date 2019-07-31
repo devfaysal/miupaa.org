@@ -25,9 +25,10 @@ class CreateMembersTable extends Migration
             $table->string('address');
             $table->string('organization')->nullable();
             $table->string('designation')->nullable();
-            $table->date('dob');
+            $table->date('dob')->nullable();
             $table->string('gender');
             $table->string('blood_group');
+            $table->string('image')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

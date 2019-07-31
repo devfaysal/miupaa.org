@@ -1,14 +1,14 @@
 <div class="hidden md:flex mb-4 ">
     <div class="w-1/5">
-        <img src="{{asset('/images/dummy-logo.png')}}" alt="">
+        <img class="h-32 w-32 mx-auto" src="{{asset('/images/dummy-logo.png')}}" alt="">
     </div>
     <div class="w-3/5">
-        <h1 class="text-2xl text-blue-700 font-bold text-center">Pharmacy Alumni Association {{$member->dob_day}}</h1>
+        <h1 class="text-2xl text-blue-700 font-bold text-center">Pharmacy Alumni Association</h1>
         <h1 class="text-xl text-blue-700 text-center">Manarat International University</h1>
         <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
     </div>
     <div class="w-1/5">
-        <img src="{{asset('/images/placeholder-person.png')}}" alt="">
+        <img id="profileImage" class="h-32 w-32 mx-auto" src="{{$member->image? asset('/storage/'. $member->image) : asset('/images/placeholder-person.png')}}" alt="">
     </div>
 </div>
 <div class="mb-4 md:hidden">
@@ -16,7 +16,7 @@
     <h1 class="text-xl text-blue-700 font-bold text-center">Pharmacy Alumni Association {{$member->dob_day}}</h1>
     <h1 class="text-blue-700 text-center">Manarat International University</h1>
     <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
-    <img class="w-2/3 mx-auto" src="{{asset('/images/placeholder-person.png')}}" alt="">
+    <img id="profileImage" class="h-40 w-40 mx-auto" src="{{asset('/images/placeholder-person.png')}}" alt="">
 </div>
 <div class="pb-3">
     @if (session('status'))
@@ -28,16 +28,29 @@
         </div>
     @endif
 </div>
-<div class="mb-4">
-    <label class="miu-label" for="name">
-        Full Name <span class="text-red-600">*</span>
-    </label>
-    <input class="miu-input" value="{{$member->name ?? old('name')}}" id="name" name="name" type="text" required>
-    @if ($errors->has('name'))
-        <span class="text-red-500 text-sm">
-            <strong>{{ $errors->first('name') }}</strong>
-        </span>
-    @endif
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="name">
+            Full Name <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{$member->name ?? old('name')}}" id="name" name="name" type="text" required>
+        @if ($errors->has('name'))
+            <span class="text-red-500 text-sm">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="image">
+            Image
+        </label>
+        <input class="miu-input-file" id="image" name="image" type="file">
+        @if ($errors->has('image'))
+            <span class="text-red-500 text-sm">
+                <strong>{{ $errors->first('image') }}</strong>
+            </span>
+        @endif
+    </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -108,17 +121,6 @@
         @endif
     </div>
 </div>
-<div class="mb-4">
-    <label class="miu-label" for="address">
-        Address <span class="text-red-600">*</span>
-    </label>
-    <input class="miu-input" value="{{$member->address ?? old('address')}}" id="address" name="address" type="text" required>
-    @if ($errors->has('address'))
-        <span class="text-red-500 text-sm">
-            <strong>{{ $errors->first('address') }}</strong>
-        </span>
-    @endif
-</div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="organization">
@@ -143,8 +145,19 @@
         @endif
     </div>
 </div>
+<div class="mb-4">
+    <label class="miu-label" for="address">
+        Address <span class="text-red-600">*</span>
+    </label>
+    <input class="miu-input" value="{{$member->address ?? old('address')}}" id="address" name="address" type="text" required>
+    @if ($errors->has('address'))
+        <span class="text-red-500 text-sm">
+            <strong>{{ $errors->first('address') }}</strong>
+        </span>
+    @endif
+</div>
 <div class="flex flex-wrap -mx-3 mb-4">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    {{-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="dob">
             Date of Birth <span class="text-red-600">*</span>
         </label>
@@ -174,28 +187,8 @@
                 <strong>{{ $errors->first('dob_year') }}</strong>
             </span>
         @endif
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="gender">
-            Gender <span class="text-red-600">*</span>
-        </label>
-        <div class="mt-3">
-            <label class="inline-flex items-center">
-                <input type="radio" class="form-checkbox h-8 w-8 border-gray-400" {{$member->gender == 'Male' ? 'checked' : ''}} name="gender" value="Male" required>
-                <span class="ml-2">Male</span>
-            </label>
-            <label class="inline-flex items-center ml-6">
-                <input type="radio" class="form-checkbox h-8 w-8 border-gray-400" {{$member->gender == 'Female' ? 'checked' : ''}} name="gender" value="Female" required>
-                <span class="ml-2">Female</span>
-            </label>
-        </div>
-        @if ($errors->has('gender'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('gender') }}</strong>
-            </span>
-        @endif
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    </div> --}}
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="blood_group">
             Blood Group <span class="text-red-600">*</span>
         </label>
@@ -206,9 +199,51 @@
             </span>
         @endif
     </div>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="gender">
+            Gender <span class="text-red-600">*</span>
+        </label>
+        <div class="mt-4">
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Male' ? 'checked' : ''}} {{old('gender') == 'Male' ? 'checked' : ''}} name="gender" value="Male" required>
+                <span class="ml-2">Male</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Female' ? 'checked' : ''}} {{old('gender') == 'Female' ? 'checked' : ''}} name="gender" value="Female" required>
+                <span class="ml-2">Female</span>
+            </label>
+        </div>
+        @if ($errors->has('gender'))
+            <span class="text-red-500 text-sm">
+                <strong>{{ $errors->first('gender') }}</strong>
+            </span>
+        @endif
+    </div>
 </div>
 <div class="flex items-center justify-between pt-3">
     <button class="miu-button" type="submit">
         Submit
     </button>
 </div>
+
+@section('javascript')
+    <script>
+        input = document.querySelector('#image');
+        
+        input.addEventListener('change', function(){
+            preview = document.querySelector('#profileImage');
+            file    = input.files[0];
+            reader  = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        });
+    </script>
+@endsection
