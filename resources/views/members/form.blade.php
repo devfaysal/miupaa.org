@@ -1,5 +1,5 @@
-<div class="flex mb-4">
-    <div class="w-1/5 bg-gray-400 h-40">
+<div class="hidden md:flex mb-4 ">
+    <div class="w-1/5">
         <img src="{{asset('/images/dummy-logo.png')}}" alt="">
     </div>
     <div class="w-3/5">
@@ -7,9 +7,16 @@
         <h1 class="text-xl text-blue-700 text-center">Manarat International University</h1>
         <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
     </div>
-    <div class="w-1/5 bg-gray-400 h-40">
+    <div class="w-1/5">
         <img src="{{asset('/images/placeholder-person.png')}}" alt="">
     </div>
+</div>
+<div class="mb-4 md:hidden">
+    <img class="w-2/3 mx-auto" src="{{asset('/images/dummy-logo.png')}}" alt="">
+    <h1 class="text-xl text-blue-700 font-bold text-center">Pharmacy Alumni Association {{$member->dob_day}}</h1>
+    <h1 class="text-blue-700 text-center">Manarat International University</h1>
+    <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
+    <img class="w-2/3 mx-auto" src="{{asset('/images/placeholder-person.png')}}" alt="">
 </div>
 <div class="pb-3">
     @if (session('status'))
@@ -32,7 +39,7 @@
         </span>
     @endif
 </div>
-<div class="flex flex-wrap -mx-3 mb-4">
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="batch">
             Batch <span class="text-red-600">*</span>
@@ -77,7 +84,7 @@
         @endif
     </div>
 </div>
-<div class="flex flex-wrap -mx-3 mb-4">
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="email">
             Email Address <span class="text-red-600">*</span>
@@ -112,7 +119,7 @@
         </span>
     @endif
 </div>
-<div class="flex flex-wrap -mx-3 mb-4">
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="organization">
             Organization
