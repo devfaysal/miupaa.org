@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-3xl mx-auto mt-3">
+    <div class="max-w-3xl mx-auto">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div class="flex mb-4">
                 <div class="w-1/5">
@@ -58,12 +58,6 @@
                     <input class="miu-input" value="{{$member->phone ?? ''}}" id="phone" name="phone" type="text">
                 </div>
             </div>
-            <div class="mb-4">
-                <label class="miu-label" for="address">
-                    Address <span class="text-red-600">*</span>
-                </label>
-                <input class="miu-input" value="{{$member->address ?? ''}}" id="address" name="address" type="text">
-            </div>
             <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="miu-label" for="organization">
@@ -82,6 +76,12 @@
                         </span>
                     @endif
                 </div>
+            </div>
+            <div class="mb-4">
+                <label class="miu-label" for="address">
+                    Address <span class="text-red-600">*</span>
+                </label>
+                <input class="miu-input" value="{{$member->address ?? ''}}" id="address" name="address" type="text">
             </div>
             <div class="flex flex-wrap -mx-3 mb-4">
                 {{-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">

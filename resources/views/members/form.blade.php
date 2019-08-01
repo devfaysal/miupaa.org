@@ -8,7 +8,7 @@
         <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
     </div>
     <div class="w-1/5">
-        <img id="profileImage" class="h-32 w-32 mx-auto" src="{{$member->image? asset('/storage/'. $member->image) : asset('/images/placeholder-person.png')}}" alt="">
+        <img id="profileImage" class="h-32 w-32 mx-auto" src="{{$member->image? asset('/storage/'. $member->image) : asset('/images/person.png')}}" alt="">
     </div>
 </div>
 <div class="mb-4 md:hidden">
@@ -29,7 +29,7 @@
     </div>
 @endif
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-1/2 print:w-full px-3 mb-6 md:mb-0">
         <label class="miu-label" for="name">
             Full Name <span class="text-red-600">*</span>
         </label>
@@ -40,7 +40,7 @@
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="image">
             Image
         </label>
@@ -53,7 +53,7 @@
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div class="print:hidden w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="batch">
             Batch <span class="text-red-600">*</span>
         </label>
@@ -74,11 +74,17 @@
             </span>
         @endif
     </div>
+    <div class="hidden print:block w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="batch">
+            Batch <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{$member->batch ?? ''}}" id="batch" name="batch" type="text">
+    </div>
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="passing_year">
             Passing Year <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->passing_year ?? old('passing_year')}}" name="passing_year" id="passing_year" type="text" placeholder="2000" required>
+        <input class="miu-input" value="{{$member->passing_year ?? old('passing_year')}}" name="passing_year" id="passing_year" type="text" required>
         @if ($errors->has('passing_year'))
             <span class="text-red-500 text-sm">
                 <strong>{{ $errors->first('passing_year') }}</strong>
@@ -89,7 +95,7 @@
         <label class="miu-label" for="university_id">
             University ID <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->university_id ?? old('university_id')}}" name="university_id" id="university_id" type="text" placeholder="0812BPM00282" required>
+        <input class="miu-input" value="{{$member->university_id ?? old('university_id')}}" name="university_id" id="university_id" type="text" required>
         @if ($errors->has('university_id'))
             <span class="text-red-500 text-sm">
                 <strong>{{ $errors->first('university_id') }}</strong>
@@ -192,7 +198,7 @@
         <label class="miu-label" for="blood_group">
             Blood Group <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->blood_group ?? old('blood_group')}}" name="blood_group" id="blood_group" type="text" placeholder="AB+" required>
+        <input class="miu-input" value="{{$member->blood_group ?? old('blood_group')}}" name="blood_group" id="blood_group" type="text" required>
         @if ($errors->has('blood_group'))
             <span class="text-red-500 text-sm">
                 <strong>{{ $errors->first('blood_group') }}</strong>
@@ -220,7 +226,7 @@
         @endif
     </div>
 </div>
-<div class="flex items-center justify-between pt-3">
+<div class="print:hidden flex items-center justify-between pt-3">
     <button class="miu-button" type="submit">
         Submit
     </button>

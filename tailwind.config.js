@@ -25,7 +25,9 @@ module.exports = {
       ],
     },
     extend: {
-
+      screens: {
+        'print': { 'raw': 'print' },
+      }
     }
   },
   variants: {},
