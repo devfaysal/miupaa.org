@@ -18,9 +18,7 @@ use App\Http\Controllers\Admin\PermissionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MemberController::class, 'create']);
 
 Route::prefix('admin')->group(function () {
 
