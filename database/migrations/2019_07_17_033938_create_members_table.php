@@ -21,7 +21,7 @@ class CreateMembersTable extends Migration
             $table->year('passing_year');
             $table->string('university_id');
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('address');
             $table->string('organization')->nullable();
             $table->string('designation')->nullable();

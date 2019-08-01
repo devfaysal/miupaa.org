@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'manage_members']);
         Permission::create(['name' => 'create_user']);
         Permission::create(['name' => 'manage_trashed_users']);
+        Permission::create(['name' => 'manage_university_ids']);
 
         $user = factory('App\User')->create();
 
-        $user->givePermissionTo(['access_admin_dashboard','manage_users','manage_members','create_user','manage_trashed_users']);
+        $user->givePermissionTo(['access_admin_dashboard','manage_users','manage_members','create_user','manage_trashed_users','manage_university_ids']);
     }
 }

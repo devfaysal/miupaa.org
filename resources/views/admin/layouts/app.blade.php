@@ -126,6 +126,12 @@
                                     <a href="/admin/dashboard">
                                         <i class="fa fa-th-large"></i> Dashboard </a>
                                 </li>
+                                @can('manage_university_ids')
+                                <li class="{{(request()->is('admin/university-ids*')) ? 'active' : '' }}">
+                                    <a href="/admin/university-ids">
+                                        <i class="fa fa-users"></i> University Ids </a>
+                                </li>
+                                @endcan
                                 @can('manage_members')
                                 <li class="{{(request()->is('admin/members*')) ? 'active' : '' }}">
                                     <a href="/admin/members">

@@ -31,10 +31,10 @@ class MemberController extends Controller
         $attributes = $request->validate([
             'name'  => 'required',
             'batch' => 'required',
-            'passing_year' => 'required',
-            'university_id' => 'required',
+            'passing_year' => 'required|integer|digits:4|min:2001|max:'.date('Y'),
+            'university_id' => 'required|exists:university_ids,number|unique:members',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|unique:members|digits:11',
             'address' => 'required',
             'organization' => 'nullable|string',
             'designation' => 'nullable|string',
@@ -43,7 +43,7 @@ class MemberController extends Controller
             // 'dob_year' => 'required',
             'gender' => 'required',
             'blood_group' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'required|image'
         ]);
         // $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
         // unset($attributes['dob_day']);

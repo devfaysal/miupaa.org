@@ -75,10 +75,10 @@
         @endif
     </div>
     <div class="hidden print:block w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="batch">
+        <label class="miu-label">
             Batch <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->batch ?? ''}}" id="batch" name="batch" type="text">
+        <input class="miu-input" value="{{$member->batch ?? ''}}" type="text">
     </div>
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="passing_year">

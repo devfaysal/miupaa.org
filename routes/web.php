@@ -3,6 +3,7 @@
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\UniversityIdController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -18,7 +19,7 @@ use App\Http\Controllers\Admin\PermissionController;
 |
 */
 
-Route::get('/', [MemberController::class, 'create']);
+Route::view('/', 'welcome');
 
 Route::prefix('admin')->group(function () {
 
@@ -53,6 +54,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/roles/{role}', [RoleController::class, 'show']);
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit']);
         Route::patch('/roles/{role}', [RoleController::class, 'update']);
+
+        //University Id
+        Route::get('/university-ids', [UniversityIdController::class, 'index']);
+        Route::get('/university-ids/create', [UniversityIdController::class, 'create']);
+        Route::post('/university-ids', [UniversityIdController::class, 'store']);
+        Route::get('/university-ids/{universityId}/edit', [UniversityIdController::class, 'edit']);
+        Route::patch('/university-ids/{universityId}', [UniversityIdController::class, 'update']);
 
         //Members
         Route::get('/members', [MemberController::class, 'index']);

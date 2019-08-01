@@ -3,6 +3,7 @@
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 use App\Member;
+use App\UniversityId;
 use Faker\Generator as Faker;
 
 $factory->define(Member::class, function (Faker $faker) {
@@ -10,9 +11,9 @@ $factory->define(Member::class, function (Faker $faker) {
         'name'          => $faker->name,
         'batch'         => $faker->randomNumber(2),
         'passing_year'  => $faker->year,
-        'university_id' => '0812BPM00282',
+        'university_id' => factory(UniversityId::class)->create()->number,
         'email'         => $faker->email,
-        'phone'         => $faker->phoneNumber,
+        'phone'         => '01670347708',
         'address'       => $faker->address,
         'organization'  => $faker->company,
         'designation'   => 'Manager',
