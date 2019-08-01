@@ -29,7 +29,7 @@
     </div>
 @endif
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-1/2 print:w-full px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-3/5 print:w-full px-3 mb-6 md:mb-0">
         <label class="miu-label" for="name">
             Full Name <span class="text-red-600">*</span>
         </label>
@@ -40,7 +40,7 @@
             </span>
         @endif
     </div>
-    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full print:hidden md:w-2/5 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="image">
             Image
         </label>
@@ -53,13 +53,13 @@
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="print:hidden w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div class="print:hidden w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="batch">
             Batch <span class="text-red-600">*</span>
         </label>
         <div class="relative">
             <select class="miu-select" name="batch" id="batch" required>
-                <option value="">-- Select Batch --</option>
+                <option value="">--Select--</option>
                 @foreach ($batches as $batch)
                     <option value="{{$batch}}" {{$batch == $member->batch ? 'selected':''}} {{$batch == old('batch') ? 'selected':''}}>{{$batch}}</option>
                 @endforeach
@@ -74,13 +74,13 @@
             </span>
         @endif
     </div>
-    <div class="hidden print:block w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div class="hidden print:block w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label">
             Batch <span class="text-red-600">*</span>
         </label>
         <input class="miu-input" value="{{$member->batch ?? ''}}" type="text">
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="passing_year">
             Passing Year <span class="text-red-600">*</span>
         </label>
@@ -91,7 +91,7 @@
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="university_id">
             University ID <span class="text-red-600">*</span>
         </label>

@@ -25,19 +25,19 @@
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="miu-label" for="batch">
                         Batch <span class="text-red-600">*</span>
                     </label>
                     <input class="miu-input" value="{{$member->batch ?? ''}}" id="batch" name="batch" type="text">
                 </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="miu-label" for="passing_year">
                         Passing Year <span class="text-red-600">*</span>
                     </label>
                     <input class="miu-input" value="{{$member->passing_year ?? ''}}" name="passing_year" id="passing_year" type="text">
                 </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
                     <label class="miu-label" for="university_id">
                         University ID <span class="text-red-600">*</span>
                     </label>
