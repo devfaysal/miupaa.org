@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -76,5 +77,10 @@ Route::get('/members/registration', [MemberController::class, 'create']);
 Route::post('/members', [MemberController::class, 'store']);
 
 Route::get('/test', function(){
-    //dd(config('batch'));
+    $member = App\Member::first();
+
+    //return view()
+    $pdf = PDF::loadView('admin.members.show', compact('member'));
+    return $pdf->stream();
+    //return $pdf->download('invoice.pdf');
 });

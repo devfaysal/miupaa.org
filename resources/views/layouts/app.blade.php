@@ -9,10 +9,6 @@
 
     <title>MIUPAA</title>
 
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400|Merriweather:400,400i,700,700i|Zilla+Slab:300,300i,400,400i&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
