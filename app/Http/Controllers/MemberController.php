@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use Illuminate\Http\Request;
+use App\Http\Requests\MemberRequest;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 
@@ -25,42 +26,15 @@ class MemberController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
-        dd($request->image->path());
-        //dd($request->all());
-        $attributes = $request->validate([
-            'name'  => 'required',
-            'batch' => 'required',
-            'passing_year' => 'required|integer|digits:4|min:2001|max:'.date('Y'),
-            'university_id' => 'required|exists:university_ids,number|unique:members',
-            'email' => 'required|email',
-            'phone' => 'required|unique:members|digits:11',
-            'address' => 'required',
-            'organization' => 'nullable|string',
-            'designation' => 'nullable|string',
-            // 'dob_day' => 'required',
-            // 'dob_month' => 'required',
-            // 'dob_year' => 'required',
-            'gender' => 'required',
-            'blood_group' => 'required',
-            'image' => 'required|image'
-        ]);
-        // $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
-        // unset($attributes['dob_day']);
-        // unset($attributes['dob_month']);
-        // unset($attributes['dob_year']);
-        //dd($attributes);
-
+        $attributes = $request->validated();
         $attributes['image'] = $this->uploadImage(
             $request->file('image')
         );
 
         //Save to DB
-        //Member::create($attributes);
         $member = Member::create($attributes);
-
-        //dd($member);
 
         //Generate Invoice
         $member->invoices()->create([
@@ -91,33 +65,11 @@ class MemberController extends Controller
         ]);
     }
 
-    public function update(Request $request, Member $member)
+    public function update(MemberRequest $request, Member $member)
     {
-        //dd($request->all());
-        $attributes = $request->validate([
-            'name'  => 'required',
-            'batch' => 'required',
-            'passing_year' => 'required',
-            'university_id' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'organization' => 'nullable|string',
-            'designation' => 'nullable|string',
-            // 'dob_day' => 'required',
-            // 'dob_month' => 'required',
-            // 'dob_year' => 'required',
-            'gender' => 'required',
-            'blood_group' => 'required',
-            'image' => 'nullable|image'
-        ]);
-        //dd($attributes);
-        // $attributes['dob'] = $attributes['dob_year'] . '-' . $attributes['dob_month'] . '-' . $attributes['dob_day'];
-        // unset($attributes['dob_day']);
-        // unset($attributes['dob_month']);
-        // unset($attributes['dob_year']);
+        $attributes = $request->validated();
 
-        if($request->image != null){
+        if($request->hasFile('image')){
             $attributes['image'] = $this->uploadImage(
                 $request->file('image')
             );
