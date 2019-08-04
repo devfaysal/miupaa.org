@@ -18,16 +18,10 @@ class CreateInvoicesTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->string('for');
             $table->string('amount');
-            $table->date('date');
-            $table->date('payment_date');
-            $table->string('payment_method');
-            $table->string('payment_reference')->nullable();
-            $table->unsignedBigInteger('updated_by_id')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
 
             $table->foreign('member_id')->references('id')->on('members');
-            $table->foreign('updated_by_id')->references('id')->on('users');
         });
     }
 

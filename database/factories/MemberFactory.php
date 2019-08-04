@@ -10,7 +10,7 @@ $factory->define(Member::class, function (Faker $faker) {
     return [
         'name'          => $faker->name,
         'batch'         => $faker->randomNumber(2),
-        'passing_year'  => $faker->year,
+        'passing_year'  => date('Y'),
         'university_id' => factory(UniversityId::class)->create()->number,
         'email'         => $faker->email,
         'phone'         => '01670347708',

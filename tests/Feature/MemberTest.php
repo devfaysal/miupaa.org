@@ -33,5 +33,7 @@ class MemberTest extends TestCase
         // unset($attributes['dob_year']);
         $attributes['image'] = $img;
         $this->assertDatabaseHas('members', $attributes);
+        $member = Member::first();
+        $this->assertDatabaseHas('invoices', ['member_id' =>$member->id]);
     }
 }

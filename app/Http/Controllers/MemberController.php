@@ -27,6 +27,7 @@ class MemberController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->image->path());
         //dd($request->all());
         $attributes = $request->validate([
             'name'  => 'required',
@@ -56,7 +57,16 @@ class MemberController extends Controller
         );
 
         //Save to DB
-        Member::create($attributes);
+        //Member::create($attributes);
+        $member = Member::create($attributes);
+
+        //dd($member);
+
+        //Generate Invoice
+        $member->invoices()->create([
+            'for'       => 'Registration Fee',
+            'amount'    => '1000',
+        ]);
 
         Session::flash('message', 'Information submitted successfully!'); 
         Session::flash('alert-class', 'alert-success');
