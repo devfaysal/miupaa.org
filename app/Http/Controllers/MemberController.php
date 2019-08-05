@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Member;
+use App\Option;
 use Illuminate\Http\Request;
 use App\Http\Requests\MemberRequest;
 use Intervention\Image\Facades\Image;
@@ -20,9 +21,9 @@ class MemberController extends Controller
 
     public function create()
     {
-        $batches = config('batch');
+        $option = Option::where('key','batches')->first();
         return view('members.create',[
-            'batches'   => $batches
+            'batches'   => $option->value
         ]);
     }
 
@@ -58,10 +59,10 @@ class MemberController extends Controller
 
     public function edit(Member $member)
     {
-        $batches = config('batch');
+        $option = Option::where('key','batches')->first();
         return view('admin.members.edit', [
             'member'    => $member,
-            'batches'   => $batches
+            'batches'   => $option->batches
         ]);
     }
 

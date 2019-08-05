@@ -58,7 +58,10 @@ Route::prefix('admin')->group(function () {
         Route::patch('/roles/{role}', [RoleController::class, 'update']);
 
         //Options
+        Route::get('/options', [OptionController::class, 'index']);
+        Route::get('/options/create', [OptionController::class, 'create']);
         Route::post('/options', [OptionController::class, 'store']);
+        Route::get('/options/{option}/edit', [OptionController::class, 'edit']);
         Route::patch('/options/{option}', [OptionController::class, 'update']);
 
         //University Id
