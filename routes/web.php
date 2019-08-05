@@ -2,6 +2,7 @@
 
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OptionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UniversityIdController;
@@ -55,6 +56,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/roles/{role}', [RoleController::class, 'show']);
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit']);
         Route::patch('/roles/{role}', [RoleController::class, 'update']);
+
+        //Options
+        Route::post('/options', [OptionController::class, 'store']);
+        Route::patch('/options/{option}', [OptionController::class, 'update']);
 
         //University Id
         Route::get('/university-ids', [UniversityIdController::class, 'index']);

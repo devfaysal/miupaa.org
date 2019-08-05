@@ -23,13 +23,6 @@ class AdminTest extends TestCase
 
     /** @test */
 
-    public function only_admin_can_access_admin_dashboard()
-    {
-        
-    }
-
-    /** @test */
-
     public function redirect_to_admin_dashboard_after_login()
     {
 
