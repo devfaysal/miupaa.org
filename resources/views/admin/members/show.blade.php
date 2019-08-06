@@ -123,5 +123,34 @@
                 </div>
             </div>
         </div>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Invoices</span></p>
+                <table class="w-full mt-3">
+                    <thead>
+                        <tr class="text-left">
+                            <th class="py-3" width="5%">#</th>
+                            <th class="py-3" width="20%">Date</th>
+                            <th class="py-3" width="45%">For</th>
+                            <th class="py-3" width="15%">Amount</th>
+                            <th class="py-3" width="15%">Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($member->invoices as $invoice)
+                            <tr>
+                                <td class="py-3 font-bold">{{$invoice->id}}</td>
+                                <td class="py-3">{{$invoice->created_at->format('d-m-Y')}}</td>
+                                <td class="py-3">{{$invoice->for}}</td>
+                                <td class="py-3">{{$invoice->amount}}</td>
+                                <td class="py-3">
+                                    <span class="{{$invoice->status == 1 ? 'bg-green-300 text-green-900' : 'bg-red-300 text-red-900'}} px-2 py-1 rounded-full font-semibold text-xs">{{$invoice->status == 1 ? 'Paid' : 'Unpaid'}}</span>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
