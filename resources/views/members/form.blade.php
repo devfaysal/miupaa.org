@@ -12,7 +12,7 @@
     </div>
 </div>
 <div class="mb-4 md:hidden">
-    <img class="w-2/3 mx-auto" src="{{asset('/images/dummy-logo.png')}}" alt="">
+    <img class="w-2/3 mx-auto" src="{{asset('/images/logo.png')}}" alt="">
     <h1 class="text-xl text-blue-700 font-bold text-center">Pharmacy Alumni Association {{$member->dob_day}}</h1>
     <h1 class="text-blue-700 text-center">Manarat International University</h1>
     <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>

@@ -3,6 +3,7 @@
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UniversityIdController;
@@ -83,6 +84,8 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/members/registration', [MemberController::class, 'create']);
 Route::post('/members', [MemberController::class, 'store']);
+//Invoices
+Route::get('/members/{member}/invoices/{invoice}', [InvoiceController::class, 'show']);
 
 Route::get('/test', function(){
     $member = App\Member::first();
