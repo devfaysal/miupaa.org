@@ -15,20 +15,35 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code')->nullable();
-            $table->string('name');
+
+            //Personal Info
+            $table->string('title')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('image')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('blood_group');
+            $table->string('gender');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('present_address');
+            $table->string('permanent_address');
+
+            //MIU Info
             $table->string('batch');
             $table->year('passing_year');
             $table->string('university_id');
-            $table->string('email');
-            $table->string('phone')->unique();
-            $table->string('address');
+
+            //Career Info
             $table->string('organization')->nullable();
             $table->string('designation')->nullable();
-            $table->date('dob')->nullable();
-            $table->string('gender');
-            $table->string('blood_group');
-            $table->string('image')->nullable();
+            $table->string('department')->nullable();
+            $table->string('office_address')->nullable();
+            $table->string('office_phone')->nullable();
+            $table->string('office_email')->nullable();
+            
+            //Administrative
+            $table->string('miupaa_number')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

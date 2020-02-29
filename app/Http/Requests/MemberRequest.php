@@ -26,16 +26,31 @@ class MemberRequest extends FormRequest
     {
         //dd($this->member->id);
         $rules = [
-            'name'  => 'required',
-            'batch' => 'required',
-            'passing_year' => 'required|integer|digits:4|min:2001|max:'.date('Y'),
+            //Personal Info
+            'title'  => 'nullable',
+            'first_name'  => 'required',
+            'last_name'  => 'required',
+            'dob'  => 'required',
+            'blood_group' => 'required',
+            'gender' => 'required',
             'email' => 'required|email',
             'phone' => 'required|unique:members|digits:11',
-            'address' => 'required',
+            'present_address' => 'required',
+            'permanent_address' => 'required',
+
+            //MIU Info
+            'batch' => 'required',
+            'passing_year' => 'required|integer|digits:4|min:2001|max:'.date('Y'),
+            
+            //Career Info
             'organization' => 'nullable|string',
             'designation' => 'nullable|string',
-            'gender' => 'required',
-            'blood_group' => 'required',
+            'department' => 'nullable|string',
+            'office_address' => 'nullable|string',
+            'office_phone' => 'nullable|string',
+            'office_email' => 'nullable|email',
+            
+            
         ];
 
         if($this->getMethod() == "POST"){

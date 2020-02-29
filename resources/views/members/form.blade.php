@@ -1,6 +1,6 @@
 <div class="hidden md:flex mb-4 ">
     <div class="w-1/5">
-        <img class="h-32 w-32 mx-auto" src="{{asset('/images/dummy-logo.png')}}" alt="">
+        <img class="h-32 w-32 mx-auto" src="{{asset('/images/logo.png')}}" alt="">
     </div>
     <div class="w-3/5">
         <h1 class="text-2xl text-blue-700 font-bold text-center">Pharmacy Alumni Association</h1>
@@ -13,7 +13,7 @@
 </div>
 <div class="mb-4 md:hidden">
     <img class="w-2/3 mx-auto" src="{{asset('/images/logo.png')}}" alt="">
-    <h1 class="text-xl text-blue-700 font-bold text-center">Pharmacy Alumni Association {{$member->dob_day}}</h1>
+    <h1 class="text-xl text-blue-700 font-bold text-center">Pharmacy Alumni Association</h1>
     <h1 class="text-blue-700 text-center">Manarat International University</h1>
     <p class="text-center pt-5"><span class="inline-block bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Membership Application Form</span></p>
     <img id="profileImage" class="h-40 w-40 mx-auto" src="{{asset('/images/person.png')}}" alt="">
@@ -28,40 +28,186 @@
         </div>
     </div>
 @endif
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-3/5 print:w-full px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="name">
-            Full Name <span class="text-red-600">*</span>
+<div class="border-b border-gray-400 mb-3">
+    <h1 class="text-2xl text-center py-3">Personal Details</h1>
+</div>
+<div class="flex flex-wrap -mx-3">
+    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="title">
+            {{ __('member.title') }}
         </label>
-        <input class="miu-input" value="{{$member->name ?? old('name')}}" id="name" name="name" type="text" required>
-        @if ($errors->has('name'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('name') }}</strong>
+        <input class="miu-input" value="{{ old('title', $member->title)}}" id="title" name="title" type="text" >
+        @if ($errors->has('title'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('title') }}</strong>
             </span>
         @endif
     </div>
-    <div class="w-full print:hidden md:w-2/5 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="image">
-            Image
+    <div class="w-full md:w-2/5 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="first_name">
+            {{ __('member.first_name') }} <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input-file" id="image" name="image" type="file">
-        @if ($errors->has('image'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('image') }}</strong>
+        <input class="miu-input" value="{{ old('first_name', $member->first_name)}}" id="first_name" name="first_name" type="text" >
+        @if ($errors->has('first_name'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('first_name') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full md:w-2/5 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="last_name">
+            {{ __('member.last_name') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('last_name', $member->last_name)}}" id="last_name" name="last_name" type="text" >
+        @if ($errors->has('last_name'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('last_name') }}</strong>
             </span>
         @endif
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="print:hidden w-full md:w-1/4 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="batch">
-            Batch <span class="text-red-600">*</span>
+    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="image">
+            {{ __('member.image') }}
+        </label>
+        <input class="miu-input-file" id="image" name="image" type="file">
+        @if ($errors->has('image'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('image') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="print:hidden w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="dob">
+            {{ __('member.dob') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('dob', $member->dob)}}" id="dob" name="dob" type="date" >
+        @if ($errors->has('dob'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('dob') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="hidden print:block w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="dob">
+            {{ __('member.dob') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" type="text" >
+        @if ($errors->has('dob'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('dob') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="print:hidden w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="blood_group">
+            {{ __('member.blood_group') }} <span class="text-red-600">*</span>
         </label>
         <div class="relative">
-            <select class="miu-select" name="batch" id="batch" required>
+            <select class="miu-select" name="blood_group" id="blood_group" >
+                @php
+                    $blood_groups = ['A+', 'A-', 'AB+', 'AB-', 'B+', 'B-', 'O+', 'O-'];
+                @endphp
+                <option value="">--Select--</option>
+                @foreach ($blood_groups as $blood_group)
+                    <option value="{{$blood_group}}" {{$blood_group == old('blood_group', $member->blood_group) ? 'selected':''}}>{{$blood_group}}</option>
+                @endforeach
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+        </div>
+        @if ($errors->has('blood_group'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('blood_group') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="hidden print:block w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label">
+            {{ __('member.blood_group') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{$member->blood_group ?? ''}}" type="text">
+    </div>
+    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="gender">
+            {{ __('member.gender') }} <span class="text-red-600">*</span>
+        </label>
+        <div class="mt-4">
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Male' ? 'checked' : ''}} {{old('gender') == 'Male' ? 'checked' : ''}} name="gender" value="Male" >
+                <span class="ml-2">Male</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Female' ? 'checked' : ''}} {{old('gender') == 'Female' ? 'checked' : ''}} name="gender" value="Female" >
+                <span class="ml-2">Female</span>
+            </label>
+        </div>
+        @if ($errors->has('gender'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('gender') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="email">
+            {{ __('member.email') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('email', $member->email)}}" id="email" name="email" type="email" >
+        @if ($errors->has('email'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="phone">
+            {{ __('member.phone') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('phone', $member->phone)}}" id="phone" name="phone" type="text" >
+        @if ($errors->has('phone'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('phone') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="present_address">
+            {{ __('member.present_address') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('present_address', $member->present_address)}}" id="present_address" name="present_address" type="text" >
+        @if ($errors->has('present_address'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('present_address') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="permanent_address">
+            {{ __('member.permanent_address') }} <span class="text-red-600">*</span>
+        </label>
+        <input class="miu-input" value="{{ old('permanent_address', $member->permanent_address)}}" id="permanent_address" name="permanent_address" type="text" >
+        @if ($errors->has('permanent_address'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('permanent_address') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="border-b border-gray-400 mb-3 mt-3">
+    <h1 class="text-2xl text-center py-3">MIU Details</h1>
+</div>
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="print:hidden w-full md:w-1/4 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="batch">
+            {{ __('member.batch') }} <span class="text-red-600">*</span>
+        </label>
+        <div class="relative">
+            <select class="miu-select" name="batch" id="batch" >
                 <option value="">--Select--</option>
                 @foreach ($batches as $batch)
-                    <option value="{{$batch}}" {{$batch == $member->batch ? 'selected':''}} {{$batch == old('batch') ? 'selected':''}}>{{$batch}}</option>
+                    <option value="{{$batch}}" {{$batch == old('batch', $member->batch) ? 'selected':''}}>{{$batch}}</option>
                 @endforeach
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -69,163 +215,112 @@
             </div>
         </div>
         @if ($errors->has('batch'))
-            <span class="text-red-500 text-sm">
+            <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('batch') }}</strong>
             </span>
         @endif
     </div>
     <div class="hidden print:block w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label">
-            Batch <span class="text-red-600">*</span>
+            {{ __('member.batch') }} <span class="text-red-600">*</span>
         </label>
         <input class="miu-input" value="{{$member->batch ?? ''}}" type="text">
     </div>
     <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="passing_year">
-            Passing Year <span class="text-red-600">*</span>
+            {{ __('member.passing_year') }} <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->passing_year ?? old('passing_year')}}" name="passing_year" id="passing_year" type="text" required>
+        <input class="miu-input" value="{{ old('passing_year', $member->passing_year)}}" name="passing_year" id="passing_year" type="text" >
         @if ($errors->has('passing_year'))
-            <span class="text-red-500 text-sm">
+            <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('passing_year') }}</strong>
             </span>
         @endif
     </div>
     <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="university_id">
-            University ID <span class="text-red-600">*</span>
+            {{ __('member.university_id') }} <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{$member->university_id ?? old('university_id')}}" name="university_id" id="university_id" type="text" required>
+        <input class="miu-input" value="{{ old('university_id', $member->university_id)}}" name="university_id" id="university_id" type="text" >
         @if ($errors->has('university_id'))
-            <span class="text-red-500 text-sm">
+            <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('university_id') }}</strong>
             </span>
         @endif
     </div>
 </div>
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="email">
-            Email Address <span class="text-red-600">*</span>
-        </label>
-        <input class="miu-input" value="{{$member->email ?? old('email')}}" id="email" name="email" type="email" required>
-        @if ($errors->has('email'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
-        @endif
-    </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="phone">
-            Phone <span class="text-red-600">*</span>
-        </label>
-        <input class="miu-input" value="{{$member->phone ?? old('phone')}}" id="phone" name="phone" type="text" required>
-        @if ($errors->has('phone'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('phone') }}</strong>
-            </span>
-        @endif
-    </div>
+<div class="border-b border-gray-400 mb-3 mt-10">
+    <h1 class="text-2xl text-center py-3">Career Details</h1>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
         <label class="miu-label" for="organization">
-            Organization
+            {{ __('member.organization') }}
         </label>
-        <input class="miu-input" value="{{$member->organization ?? old('organization')}}" id="organization" name="organization" type="text">
+        <input class="miu-input" value="{{ old('organization', $member->organization)}}" id="organization" name="organization" type="text">
         @if ($errors->has('organization'))
-            <span class="text-red-500 text-sm">
+            <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('organization') }}</strong>
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
         <label class="miu-label" for="designation">
-            Designation
+            {{ __('member.designation') }}
         </label>
-        <input class="miu-input" value="{{$member->designation ?? old('designation')}}" id="designation" name="designation" type="text">
+        <input class="miu-input" value="{{ old('designation', $member->designation)}}" id="designation" name="designation" type="text">
         @if ($errors->has('designation'))
-            <span class="text-red-500 text-sm">
+            <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('designation') }}</strong>
             </span>
         @endif
     </div>
-</div>
-<div class="mb-4">
-    <label class="miu-label" for="address">
-        Address <span class="text-red-600">*</span>
-    </label>
-    <input class="miu-input" value="{{$member->address ?? old('address')}}" id="address" name="address" type="text" required>
-    @if ($errors->has('address'))
-        <span class="text-red-500 text-sm">
-            <strong>{{ $errors->first('address') }}</strong>
-        </span>
-    @endif
-</div>
-<div class="flex flex-wrap -mx-3 mb-4">
-    {{-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="dob">
-            Date of Birth <span class="text-red-600">*</span>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="department">
+            {{ __('member.department') }}
         </label>
-        <div class="flex">
-            <div class="mr-2">
-                <input class="miu-input" value="{{$member->dob_day ?? old('dob_day') }}" name="dob_day" id="dob" type="text" placeholder="DD" required>
-            </div>
-            <div class="mr-2">
-                <input class="miu-input" value="{{$member->dob_month ?? old('dob_month') }}" name="dob_month" id="dob" type="text" placeholder="MM" required>
-            </div>
-            <div>
-                <input class="miu-input" value="{{$member->dob_year ?? old('dob_year') }}" name="dob_year" id="dob" type="text" placeholder="YYYY" required>
-            </div>
-        </div>
-        @if ($errors->has('dob_day'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('dob_day') }}</strong>
-            </span>
-        @endif
-        @if ($errors->has('dob_month'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('dob_month') }}</strong>
-            </span>
-        @endif
-        @if ($errors->has('dob_year'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('dob_year') }}</strong>
-            </span>
-        @endif
-    </div> --}}
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="blood_group">
-            Blood Group <span class="text-red-600">*</span>
-        </label>
-        <input class="miu-input" value="{{$member->blood_group ?? old('blood_group')}}" name="blood_group" id="blood_group" type="text" required>
-        @if ($errors->has('blood_group'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('blood_group') }}</strong>
+        <input class="miu-input" value="{{ old('department', $member->department)}}" id="department" name="department" type="text">
+        @if ($errors->has('department'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('department') }}</strong>
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="miu-label" for="gender">
-            Gender <span class="text-red-600">*</span>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="office_email">
+            {{ __('member.office_email') }}
         </label>
-        <div class="mt-4">
-            <label class="inline-flex items-center">
-                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Male' ? 'checked' : ''}} {{old('gender') == 'Male' ? 'checked' : ''}} name="gender" value="Male" required>
-                <span class="ml-2">Male</span>
-            </label>
-            <label class="inline-flex items-center ml-6">
-                <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Female' ? 'checked' : ''}} {{old('gender') == 'Female' ? 'checked' : ''}} name="gender" value="Female" required>
-                <span class="ml-2">Female</span>
-            </label>
-        </div>
-        @if ($errors->has('gender'))
-            <span class="text-red-500 text-sm">
-                <strong>{{ $errors->first('gender') }}</strong>
+        <input class="miu-input" value="{{ old('office_email', $member->office_email)}}" id="office_email" name="office_email" type="email" >
+        @if ($errors->has('office_email'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('office_email') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="office_phone">
+            {{ __('member.office_phone') }}
+        </label>
+        <input class="miu-input" value="{{ old('office_phone', $member->office_phone)}}" id="office_phone" name="office_phone" type="text" >
+        @if ($errors->has('office_phone'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('office_phone') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-3">
+        <label class="miu-label" for="office_address">
+            {{ __('member.office_address') }}
+        </label>
+        <input class="miu-input" value="{{ old('office_address', $member->office_address)}}" id="office_address" name="office_address" type="text" >
+        @if ($errors->has('office_address'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('office_address') }}</strong>
             </span>
         @endif
     </div>
 </div>
+
 <div class="print:hidden flex items-center justify-between pt-3">
     <button class="miu-button" type="submit">
         Submit
