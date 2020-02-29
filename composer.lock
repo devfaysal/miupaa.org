@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c450bad46215d0731d1a0e94b9314290",
+    "content-hash": "2f7d1546ed8c63f544012f95d0d7cb2c",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -61,6 +61,68 @@
                 "pdf"
             ],
             "time": "2020-02-25T20:44:34+00:00"
+        },
+        {
+            "name": "devfaysal/laravel-admin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devfaysal/laravel-admin.git",
+                "reference": "d9ca3b14b8d00db31c0fd4a4a255aecbcb795f42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devfaysal/laravel-admin/zipball/d9ca3b14b8d00db31c0fd4a4a255aecbcb795f42",
+                "reference": "d9ca3b14b8d00db31c0fd4a4a255aecbcb795f42",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0",
+                "php": "^7.3",
+                "spatie/laravel-permission": "^3.2",
+                "yajra/laravel-datatables-oracle": "^9.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "4.*",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devfaysal\\LaravelAdmin\\LaravelAdminServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelAdmin": "Devfaysal\\LaravelAdmin\\LaravelAdminFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devfaysal\\LaravelAdmin\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faysal Ahamed",
+                    "email": "devfaysal@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Admin Dashboard for Laravel project",
+            "homepage": "https://github.com/devfaysal/laravel-admin",
+            "keywords": [
+                "devfaysal",
+                "laravel-admin"
+            ],
+            "time": "2020-02-27T06:47:14+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -896,16 +958,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f"
+                "reference": "8015f806173c6ee54de25a87c2d69736696e88db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/4f30be7a2cbf3bfa5788abab71384713e48f451f",
-                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/8015f806173c6ee54de25a87c2d69736696e88db",
+                "reference": "8015f806173c6ee54de25a87c2d69736696e88db",
                 "shasum": ""
             },
             "require": {
@@ -966,7 +1028,7 @@
                 "md",
                 "parser"
             ],
-            "time": "2020-02-08T23:42:03+00:00"
+            "time": "2020-02-28T18:53:50+00:00"
         },
         {
             "name": "league/flysystem",
@@ -3536,6 +3598,77 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v9.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "9797a5f1b962b9ebf6bb087c88314dd724b3d5c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/9797a5f1b962b9ebf6bb087c88314dd724b3d5c0",
+                "reference": "9797a5f1b962b9ebf6bb087c88314dd724b3d5c0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.8.*|^6.0",
+                "illuminate/filesystem": "5.8.*|^6.0",
+                "illuminate/http": "5.8.*|^6.0",
+                "illuminate/support": "5.8.*|^6.0",
+                "illuminate/view": "5.8.*|^6.0",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
+                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2019-12-17T03:30:56+00:00"
         }
     ],
     "packages-dev": [
@@ -5855,6 +5988,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "devfaysal/laravel-admin": 20,
         "fzaninotto/faker": 20
     },
     "prefer-stable": true,

@@ -3,6 +3,7 @@
 use App\Option;
 use App\UniversityId;
 use Illuminate\Database\Seeder;
+use Devfaysal\LaravelAdmin\Models\Admin;
 use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
@@ -14,17 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['name' => 'access_admin_dashboard']);
-        Permission::create(['name' => 'manage_users']);
-        Permission::create(['name' => 'manage_members']);
-        Permission::create(['name' => 'create_user']);
-        Permission::create(['name' => 'manage_trashed_users']);
-        Permission::create(['name' => 'manage_university_ids']);
-        Permission::create(['name' => 'manage_options']);
+        $this->call(LaravelAdminSeeder::class);
 
-        $user = factory('App\User')->create();
+        Permission::create(['guard_name'=>'admin', 'name' => 'manage_university_ids']);
+        Permission::create(['guard_name'=>'admin', 'name' => 'manage_options']);
+        Permission::create(['guard_name'=>'admin', 'name' => 'manage_members']);
 
-        $user->givePermissionTo(['access_admin_dashboard','manage_users','manage_members','create_user','manage_trashed_users','manage_university_ids','manage_options']);
+        $admin = Admin::first();
+
+        $admin->givePermissionTo(['manage_university_ids','manage_options','manage_members']);
 
         //University ID
         for($i=200; $i<=299; $i++){

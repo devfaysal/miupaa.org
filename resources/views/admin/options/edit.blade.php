@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('laravel-admin::layouts.app')
 @section('content')
 <section id="app" class="section">
     <form role="form" method="POST" action="/admin/options/{{$option->id}}">
