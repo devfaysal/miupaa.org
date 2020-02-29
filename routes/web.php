@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\PermissionController;
 
+use Spatie\Browsershot\Browsershot;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,10 +60,11 @@ Route::post('/members', [MemberController::class, 'store']);
 Route::get('/members/{member}/invoices/{invoice}', [InvoiceController::class, 'show']);
 
 Route::get('/test', function(){
-    $member = App\Member::first();
+    // $member = App\Member::first();
 
     //return view()
-    $pdf = PDF::loadView('admin.members.show', compact('member'));
-    return $pdf->stream();
+    // $pdf = PDF::loadView('admin.members.show', compact('member'));
+    // return $pdf->stream();
     //return $pdf->download('invoice.pdf');
+    Browsershot::url('http://miupaa.org.test/members/registration')->fullPage()->save(storage_path().'/app/public/imasge.png');
 });

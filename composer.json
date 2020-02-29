@@ -14,7 +14,8 @@
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
         "laravel/framework": "^6.17",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/browsershot": "^3.34"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

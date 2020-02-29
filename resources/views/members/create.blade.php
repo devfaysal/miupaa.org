@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-3xl mx-auto">
-        <form method="POST" action="/members" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 print:px-0 print:pt-0 pt-6 pb-8 mb-4">
+    <div class="max-w-4xl mx-auto">
+        <form method="POST" action="/members" enctype="multipart/form-data" class="bg-orange-200 shadow-md rounded px-8 print:px-0 print:pt-0 pt-6 pb-8 mb-4">
             @csrf
             
             @include('members.form', [
