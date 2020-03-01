@@ -11,8 +11,16 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <style>
+        @page {
+            margin: 0cm;
+        }
+        @media print {
+            .pagebreak { page-break-before: always; }
+        }
+    </style>
 </head>
-<body class="bg-gray-200 print:bg-transparent leading-tight">
+<body class="bg-gray-200 print:bg-orange-200 leading-tight">
     <main>
         <!--Flash Message Start-->
         @if (Session::has('message'))

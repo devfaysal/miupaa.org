@@ -1,15 +1,11 @@
 <?php
 
-use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\UniversityIdController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\PermissionController;
+
 
 use Spatie\Browsershot\Browsershot;
 
@@ -58,13 +54,3 @@ Route::get('/members/registration', [MemberController::class, 'create']);
 Route::post('/members', [MemberController::class, 'store']);
 //Invoices
 Route::get('/members/{member}/invoices/{invoice}', [InvoiceController::class, 'show']);
-
-Route::get('/test', function(){
-    // $member = App\Member::first();
-
-    //return view()
-    // $pdf = PDF::loadView('admin.members.show', compact('member'));
-    // return $pdf->stream();
-    //return $pdf->download('invoice.pdf');
-    Browsershot::url('http://miupaa.org.test/members/registration')->fullPage()->save(storage_path().'/app/public/imasge.png');
-});

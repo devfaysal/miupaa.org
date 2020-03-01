@@ -62,7 +62,7 @@ class MemberController extends Controller
         $option = Option::where('key','batches')->first();
         return view('admin.members.edit', [
             'member'    => $member,
-            'batches'   => $option->batches
+            'batches'   => $option->value
         ]);
     }
 

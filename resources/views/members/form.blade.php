@@ -29,7 +29,7 @@
     </div>
 @endif
 <div class="border-b border-gray-400 mb-3">
-    <h1 class="text-2xl text-center py-3">Personal Details</h1>
+    <h1 class="text-2xl text-blue-700 text-center py-3">Personal Details</h1>
 </div>
 <div class="flex flex-wrap -mx-3">
     <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
@@ -67,22 +67,11 @@
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
-        <label class="miu-label" for="image">
-            {{ __('member.image') }}
-        </label>
-        <input class="miu-input-file" id="image" name="image" type="file">
-        @if ($errors->has('image'))
-            <span class="text-red-500 text-xs">
-                <strong>{{ $errors->first('image') }}</strong>
-            </span>
-        @endif
-    </div>
     <div class="print:hidden w-1/2 px-3 mb-6 md:mb-0 mt-3">
         <label class="miu-label" for="dob">
             {{ __('member.dob') }} <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" value="{{ old('dob', $member->dob)}}" id="dob" name="dob" type="date" >
+        <input class="miu-input" value="{{ old('dob', $member->dob ? $member->dob->format('Y-m-d') : '')}}" id="dob" name="dob" type="date" >
         @if ($errors->has('dob'))
             <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('dob') }}</strong>
@@ -93,7 +82,7 @@
         <label class="miu-label" for="dob">
             {{ __('member.dob') }} <span class="text-red-600">*</span>
         </label>
-        <input class="miu-input" type="text" >
+        <input class="miu-input" type="text" value="{{ $member->dob ? $member->dob->format('d-m-Y') : '' }}">
         @if ($errors->has('dob'))
             <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('dob') }}</strong>
@@ -130,7 +119,9 @@
         </label>
         <input class="miu-input" value="{{$member->blood_group ?? ''}}" type="text">
     </div>
-    <div class="w-1/2 px-3 mb-6 md:mb-0 mt-3">
+</div>
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="gender">
             {{ __('member.gender') }} <span class="text-red-600">*</span>
         </label>
@@ -150,7 +141,20 @@
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="miu-label" for="image">
+            {{ __('member.image') }}
+        </label>
+        <input class="miu-input-file" id="image" name="image" type="file">
+        @if ($errors->has('image'))
+            <span class="text-red-500 text-xs">
+                <strong>{{ $errors->first('image') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="email">
             {{ __('member.email') }} <span class="text-red-600">*</span>
         </label>
@@ -161,7 +165,7 @@
             </span>
         @endif
     </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="phone">
             {{ __('member.phone') }} <span class="text-red-600">*</span>
         </label>
@@ -172,7 +176,9 @@
             </span>
         @endif
     </div>
-    <div class="w-full px-3 mb-6 md:mb-0 mt-3">
+</div>
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="w-full px-3 mb-6 md:mb-0">
         <label class="miu-label" for="present_address">
             {{ __('member.present_address') }} <span class="text-red-600">*</span>
         </label>
@@ -183,7 +189,9 @@
             </span>
         @endif
     </div>
-    <div class="w-full px-3 mb-6 md:mb-0 mt-3">
+</div>
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+    <div class="w-full px-3 mb-6 md:mb-0">
         <label class="miu-label" for="permanent_address">
             {{ __('member.permanent_address') }} <span class="text-red-600">*</span>
         </label>
@@ -195,8 +203,8 @@
         @endif
     </div>
 </div>
-<div class="border-b border-gray-400 mb-3 mt-3">
-    <h1 class="text-2xl text-center py-3">MIU Details</h1>
+<div class="border-b border-gray-400 mb-3 mt-6">
+    <h1 class="text-2xl text-blue-700 text-center py-3">MIU Details</h1>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="print:hidden w-full md:w-1/4 px-3 mb-6 md:mb-0">
@@ -249,8 +257,8 @@
         @endif
     </div>
 </div>
-<div class="border-b border-gray-400 mb-3 mt-10">
-    <h1 class="text-2xl text-center py-3">Career Details</h1>
+<div class="border-b border-gray-400 mb-3 mt-10 pagebreak">
+    <h1 class="text-2xl text-blue-700 text-center py-3 print:pt-10">Career Details</h1>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
