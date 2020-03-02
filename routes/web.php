@@ -46,6 +46,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/members/{member}/edit', [MemberController::class, 'edit']);
         Route::patch('/members/{member}', [MemberController::class, 'update']);
 
+        //Money Receipt
+        Route::view('/moneyreceipt', 'moneyreceipt');
+
     });
     
 });

@@ -66,8 +66,8 @@
         @endif
     </div>
 </div>
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="print:hidden w-1/2 px-3 mb-6 md:mb-0 mt-3">
+<div class="flex flex-wrap -mx-3 mt-5">
+    <div class="print:hidden w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="dob">
             {{ __('member.dob') }} <span class="text-red-600">*</span>
         </label>
@@ -78,7 +78,7 @@
             </span>
         @endif
     </div>
-    <div class="hidden print:block w-1/2 px-3 mb-6 md:mb-0 mt-3">
+    <div class="hidden print:block w-1/4 print:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="dob">
             {{ __('member.dob') }} <span class="text-red-600">*</span>
         </label>
@@ -89,7 +89,7 @@
             </span>
         @endif
     </div>
-    <div class="print:hidden w-1/2 px-3 mb-6 md:mb-0 mt-3">
+    <div class="print:hidden w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="blood_group">
             {{ __('member.blood_group') }} <span class="text-red-600">*</span>
         </label>
@@ -113,26 +113,24 @@
             </span>
         @endif
     </div>
-    <div class="hidden print:block w-1/2 px-3 mb-6 md:mb-0 mt-3">
+    <div class="hidden print:block w-1/4 print:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label">
             {{ __('member.blood_group') }} <span class="text-red-600">*</span>
         </label>
         <input class="miu-input" value="{{$member->blood_group ?? ''}}" type="text">
     </div>
-</div>
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
-    <div class="w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-1/4 print:w-1/3 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="gender">
             {{ __('member.gender') }} <span class="text-red-600">*</span>
         </label>
-        <div class="mt-4">
+        <div class="mt-3">
             <label class="inline-flex items-center">
                 <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Male' ? 'checked' : ''}} {{old('gender') == 'Male' ? 'checked' : ''}} name="gender" value="Male" >
-                <span class="ml-2">Male</span>
+                <span class="ml-2 text-gray-800">Male</span>
             </label>
             <label class="inline-flex items-center ml-6">
                 <input type="radio" class="form-checkbox h-6 w-6 border-gray-400" {{$member->gender == 'Female' ? 'checked' : ''}} {{old('gender') == 'Female' ? 'checked' : ''}} name="gender" value="Female" >
-                <span class="ml-2">Female</span>
+                <span class="ml-2 text-gray-800">Female</span>
             </label>
         </div>
         @if ($errors->has('gender'))
@@ -141,11 +139,11 @@
             </span>
         @endif
     </div>
-    <div class="w-full print:hidden md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full print:hidden md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="image">
             {{ __('member.image') }}
         </label>
-        <input class="miu-input-file" id="image" name="image" type="file">
+        <input class="" id="image" name="image" type="file">
         @if ($errors->has('image'))
             <span class="text-red-500 text-xs">
                 <strong>{{ $errors->first('image') }}</strong>
@@ -153,7 +151,7 @@
         @endif
     </div>
 </div>
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+<div class="flex flex-wrap -mx-3 mb-4 mt-5">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="email">
             {{ __('member.email') }} <span class="text-red-600">*</span>
@@ -206,7 +204,7 @@
 <div class="border-b border-gray-400 mb-3 mt-6">
     <h1 class="text-2xl text-blue-700 text-center py-3">MIU Details</h1>
 </div>
-<div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
+<div class="flex flex-wrap -mx-3 mb-0 md:mb-4 mt-6">
     <div class="print:hidden w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label class="miu-label" for="batch">
             {{ __('member.batch') }} <span class="text-red-600">*</span>
@@ -257,8 +255,8 @@
         @endif
     </div>
 </div>
-<div class="border-b border-gray-400 mb-3 mt-10 pagebreak">
-    <h1 class="text-2xl text-blue-700 text-center py-3 print:pt-10">Career Details</h1>
+<div class="border-b border-gray-400 mb-3 mt-6">
+    <h1 class="text-2xl text-blue-700 text-center py-3">Career Details</h1>
 </div>
 <div class="flex flex-wrap -mx-3 mb-0 md:mb-4">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-3">
@@ -326,6 +324,25 @@
                 <strong>{{ $errors->first('office_address') }}</strong>
             </span>
         @endif
+    </div>
+</div>
+<div>
+    <p class="text-gray-700 text-xs leading-normal tracking-normal text-justify">
+        I hereby apply for the Membership of the Manarat International University Pharmacy Alumni Association (MIUPAA) for which I am eligible. The requisite Subscription fee (Cash/bKash/Bank Transfer/Other) in favor of MIUPAA is being paid. My particulars are given above. In case of any change, I shall intimate the same. I have read the constitution of the Association and agree to abide by it.
+    </p>
+</div>
+<div class="flex justify-between">
+    <div class="text-right pt-16">
+        <p class="text-gray-700 text-sm font-semibold">----------------------------</p>
+        <p class="text-center text-gray-700 text-sm font-semibold">President</p>
+    </div>
+    <div class="text-right pt-16">
+        <p class="text-gray-700 text-sm font-semibold">----------------------------</p>
+        <p class="text-center text-gray-700 text-sm font-semibold">Secretary</p>
+    </div>
+    <div class="text-right pt-16">
+        <p class="text-gray-700 text-sm font-semibold">----------------------------</p>
+        <p class="text-center text-gray-700 text-sm font-semibold">Applicant</p>
     </div>
 </div>
 

@@ -37,7 +37,7 @@
         @yield('content')
     </main>
     <footer class="pt-4 pb-8">
-        <p class="text-sm text-center text-gray-600">MIU Pharmacy Alumni Association © {{date('Y')}}</p>
+        <p class="print:hidden text-sm text-center text-gray-600">MIU Pharmacy Alumni Association © {{date('Y')}}</p>
         <p class="print:hidden text-sm text-center text-gray-600">Developed with ❤ by <a href="https://faysal.me">Faysal Ahamed</a></p>
     </footer>
     
