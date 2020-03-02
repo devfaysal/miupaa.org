@@ -331,7 +331,7 @@
         I hereby apply for the Membership of the Manarat International University Pharmacy Alumni Association (MIUPAA) for which I am eligible. The requisite Subscription fee (Cash/bKash/Bank Transfer/Other) in favor of MIUPAA is being paid. My particulars are given above. In case of any change, I shall intimate the same. I have read the constitution of the Association and agree to abide by it.
     </p>
 </div>
-<div class="flex justify-between">
+<div class="hidden print:flex justify-between">
     <div class="text-right pt-16">
         <p class="text-gray-700 text-sm font-semibold">----------------------------</p>
         <p class="text-center text-gray-700 text-sm font-semibold">President</p>
