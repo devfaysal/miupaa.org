@@ -1,13 +1,14 @@
 <?php
 
+use Spatie\Browsershot\Browsershot;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\InvoiceController;
+
+
 use App\Http\Controllers\UniversityIdController;
 use App\Http\Controllers\Admin\DashboardController;
-
-
-use Spatie\Browsershot\Browsershot;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ use Spatie\Browsershot\Browsershot;
 |
 */
 
-Route::view('testing', 'testing');
+Route::get('/testing', [TestController::class, 'index']);
+Route::post('/testing', [TestController::class, 'store']);
 
 Route::view('/', 'welcome');
 

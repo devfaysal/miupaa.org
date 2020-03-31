@@ -7,8 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="?" method="post">
-        <input type="file" accept="image/*" capture="camera">
+    <form action="" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" accept="image/*" name="image" capture="camera">
+        <input type="submit" value="Upload">
     </form>
+
+    <h1>Image</h1>
+    <img src="{{asset('/storage/'. $imageName)}}" alt="">
 </body>
 </html>
