@@ -20,6 +20,8 @@ use Spatie\Browsershot\Browsershot;
 |
 */
 
+Route::view('testing');
+
 Route::view('/', 'welcome');
 
 Route::prefix('admin')->group(function () {
