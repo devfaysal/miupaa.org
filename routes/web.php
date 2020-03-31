@@ -20,7 +20,7 @@ use Spatie\Browsershot\Browsershot;
 |
 */
 
-Route::view('testing');
+Route::view('testing', 'testing');
 
 Route::view('/', 'welcome');
 
